@@ -1,0 +1,26 @@
+services:
+  - type: web
+    name: majkclient-account-api
+    runtime: node
+    plan: free
+    region: frankfurt
+    rootDir: account-service
+    buildCommand: npm ci --omit=dev
+    startCommand: npm start
+    healthCheckPath: /api/health
+    envVars:
+      - key: DATABASE_URL
+        fromDatabase:
+          name: majkclient-accounts
+          property: connectionString
+      - key: SESSION_TTL_DAYS
+        value: "30"
+      - key: TRUST_PROXY
+        value: "true"
+
+databases:
+  - name: majkclient-accounts
+    databaseName: majkclient
+    user: majkclient
+    plan: free
+    region: frankfurt
