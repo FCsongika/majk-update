@@ -1,0 +1,17 @@
+{
+  "name": "majkclient-account-service",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Account and friend-request API for MajkClient",
+  "engines": {
+    "node": ">=22.12"
+  },
+  "scripts": {
+    "start": "node --env-file-if-exists=.env server.js"
+  },
+  "dependencies": {
+    "express": "^5.1.0",
+    "helmet": "^8.1.0",
+    "pg": "^8.16.3"
+  }
+}
